@@ -2,7 +2,6 @@ package com.springcourse.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -23,9 +22,10 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter
+@Getter
+@Setter
 @Entity(name = "user")
-public class User implements Serializable{
+public class User implements Serializable {
 
 	/**
 	 * 
@@ -35,27 +35,27 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(length = 75, nullable = false)
 	private String name;
-	
+
 	@Column(length = 75, nullable = false)
 	private String email;
-	
+
 	@Column(length = 100, nullable = false)
-	private Date password;
-	
+	private String password;
+
 	@Column(length = 20, nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	
+
 	@OneToMany(mappedBy = "owner")
 	private List<Request> requests = new ArrayList<>();
-	
+
 	@OneToMany(mappedBy = "owner")
 	private List<RequestStage> stages = new ArrayList<>();
+
 	
 	
-	
-	
+
 }
